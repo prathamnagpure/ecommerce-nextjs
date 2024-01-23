@@ -147,14 +147,21 @@ function Categories() {
           value={property.name}
           onChange={(ev) => handlePropertyNameChanged(index, ev.target.value)}
           placeholder="property name (example: color)"
+          className={"w-full p-1"}
         />
         <input
           type="text"
           onChange={(ev) => handlePropertyValuesChanged(index, ev.target.value)}
           value={property.values}
           placeholder="values, comma separated"
+          className={"w-full p-1"}
         />
-        <BasicButton type="button" onClick={() => removeProperty(index)}>
+        <BasicButton
+          variant={"gray"}
+          type="button"
+          onClick={() => removeProperty(index)}
+          className={"ml-2"}
+        >
           Remove
         </BasicButton>
       </div>
