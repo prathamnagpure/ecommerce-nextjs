@@ -15,16 +15,28 @@ export async function GET(request) {
 }
 
 export async function POST(request) {
-  const { title, description, price } = await request.json();
+  const { title, description, price, images, category, properties } =
+    await request.json();
   await connectDatabase();
-  const productDoc = await Product.create({ title, description, price });
+  const productDoc = await Product.create({
+    title,
+    description,
+    price,
+    images,
+    category,
+    properties,
+  });
   return NextResponse.json(productDoc);
 }
 
 export async function PUT(request) {
-  const { _id, title, description, price } = await request.json();
+  const { _id, title, description, price, images, category, properties } =
+    await request.json();
   await connectDatabase();
-  await Product.updateOne({ _id }, { title, description, price });
+  await Product.updateOne(
+    { _id },
+    { title, description, price, images, category, properties }
+  );
 
   return NextResponse.json(true);
 }

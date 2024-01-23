@@ -3,6 +3,9 @@ import MainLayout from "@/app/components/MainLayout";
 import axios from "axios";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import BasicTable from "../components/BasicTable";
+import HeadTd from "../components/HeadTd";
+import BodyTd from "../components/BodyTd";
 
 function Products() {
   const [products, setProducts] = useState([]);
@@ -20,23 +23,21 @@ function Products() {
       >
         Add new product
       </Link>
-      <table className="m-2 w-full">
+      <BasicTable>
         <thead>
           <tr>
-            <td className="bg-blue-100 border border-blue-200 p-1">
-              Product name
-            </td>
-            <td className="bg-blue-100 border border-blue-200 p-1"></td>
+            <HeadTd>Product name</HeadTd>
+            <HeadTd />
           </tr>
         </thead>
         <tbody>
           {products.map((product, index) => {
             return (
               <tr key={index}>
-                <td className="border border-blue-200 p-1">
+                <BodyTd>
                   <tr>{product.title}</tr>
-                </td>
-                <td className="border border-blue-200 p-1">
+                </BodyTd>
+                <BodyTd>
                   <Link
                     className="m-1 bg-blue-900 text-white text-sm py-1 px-2 rounded-md inline-flex"
                     href={"products/edit/" + product._id}
@@ -77,12 +78,12 @@ function Products() {
                     </svg>
                     Delete
                   </Link>
-                </td>
+                </BodyTd>
               </tr>
             );
           })}
         </tbody>
-      </table>
+      </BasicTable>
     </MainLayout>
   );
 }
